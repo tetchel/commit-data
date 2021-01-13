@@ -1,0 +1,16 @@
+name: 'Get Commit Data'
+description: 'Derive additional commit data for the current workflow'
+# inputs:
+  # none
+outputs:
+  tags:
+    description: All tags that point at the HEAD commit. If there are no tags, this is the empty string. If there are multiple tags, they are sorted alphabetically and separated by spaces.
+  tag:
+    description: If tags is not empty, this is the first tag alphabetically. This way, you can know that this output contains exactly one or zero tags.
+  tags_count:
+    description: The integer number of tags in "tags".
+  short_sha:
+    description: First 7 characters of the HEAD commit.
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

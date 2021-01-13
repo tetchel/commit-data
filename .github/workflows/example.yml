@@ -1,0 +1,42 @@
+name: Example Get Tag Workflow
+on:
+  push:
+
+jobs:
+  commit_data:
+    name: Get Commit Data
+    runs-on: ubuntu-20.04
+    outputs:
+      tag: ${{ steps.commit_data.outputs.tag }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run self
+        id: commit_data
+        uses: ./
+
+      - name: Echo outputs
+        run: echo "${{ toJSON(steps.commit_data.outputs) }}"
+
+  release:
+    name: Release
+    needs: [ commit_data ]
+    runs-on: ubuntu-20.04
+    if: needs.commit_data.outputs.tag != ''
+
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ needs.commit_data.outputs.tag }}
+
+      - name: Echo release URL
+        run: |
+          export RELEASE_URL=${{ steps.create_release.outputs.html_url }}
+          echo "===================== View your release at: ======================"
+          echo "===> $RELEASE_URL"
+          echo "=================================================================="
