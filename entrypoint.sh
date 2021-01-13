@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/sh -l
+
+set -e -o pipefail
 
 commit_sha=$(git rev-parse HEAD)
 echo "HEAD commit SHA is $commit_sha"
@@ -22,4 +24,4 @@ echo
 echo "::set-output name=short_sha::$short_sha"
 echo "::set-output name=tag::$tag"
 echo "::set-output name=tags::$tags"
-echo "::set-output name=tag_count:$tags_count"
+echo "::set-output name=tag_count::$tags_count"
