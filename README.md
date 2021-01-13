@@ -2,7 +2,9 @@
 
 This is a small action which captures some logic I'd find myself needing in lots of different workflows.
 
-Firstly, I wanted to retrieve the tag for the current workflow, and perform some action if this is a "tag workflow". For example, I like to tag my Docker images with the git tag if there is one, else I tag the images with `latest`. Or, you may want to automatically create a GitHub release corresponding to each pushed tag.
+Firstly, I wanted to retrieve the tag corresponding to the commit for the current workflow, and perform some action if this is a "tag workflow".
+
+For example, I like to tag my Docker images with the git tag if there is one, else I tag the images with `latest`. Or, you may want to automatically create a GitHub release corresponding to each pushed tag.
 
 Secondly, I often want to get the short commit SHA (conventionally the first 7 characters).
 

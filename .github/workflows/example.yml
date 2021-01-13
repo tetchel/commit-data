@@ -1,4 +1,4 @@
-name: Example Get Tag Workflow
+name: Example Commit Data Workflow
 on:
   push:
 
