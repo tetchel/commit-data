@@ -3,6 +3,14 @@ description: 'Derive additional commit data for the current workflow'
 # inputs:
   # none
 outputs:
+  branch:
+    description: HEAD branch
+  is_pr:
+    description: "'true' if this is a PR workflow, else 'false'."
+  pr_head:
+    description: The pull request head ref (the ref the PR is "coming from"). Empty if (!is_pr).
+  pr_base:
+    description: The pull request base ref (the ref that is "receiving" the PR). Empty if (!is_pr).
   tags:
     description: All tags that point at the HEAD commit. If there are no tags, this is the empty string. If there are multiple tags, they are sorted alphabetically and separated by spaces.
   tag:

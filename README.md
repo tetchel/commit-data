@@ -16,6 +16,10 @@ This action takes no input, it just needs the git metadata which it gets from di
 
 | Name | Description |
 | ---- | ----------- |
+| branch | HEAD branch. Empty if the current ref is a tag. |
+| is_pr | 'true' if this is a PR workflow, else 'false'. |
+| pr_head | The pull request head ref (the ref the PR is "coming from"). Empty if (!is_pr). |
+| pr_base | The pull request base ref (the ref that is "receiving" the PR). Empty if (!is_pr). |
 | short_sha | The first 7 characters of the HEAD commit. |
 | tags | All tags that point at the HEAD commit. <br>If there are no tags, this is the empty string. <br>If there are multiple tags, they are sorted alphabetically and separated by spaces. |
 | tag  | If `tags` is not empty, this is the first tag alphabetically. <br>This way, you can know that this output contains exactly one tag, or the empty string. |
